@@ -12,7 +12,7 @@
 
 	var 
 	// Localize global references
-	doc = document,
+	doc = global.document,
 
 	//	From Embed.ly API
 	getUrl = function( url ) {
