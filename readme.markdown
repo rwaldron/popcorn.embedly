@@ -15,4 +15,8 @@ Embed the hell out of anything!
 	});
 
 
+Unit Tests:
+http://code.bocoup.com/popcorn.embedly/test/
 
+Functional Demo (open and press play):
+http://code.bocoup.com/popcorn.embedly/test/functional.html
