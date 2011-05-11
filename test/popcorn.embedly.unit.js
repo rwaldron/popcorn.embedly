@@ -65,6 +65,16 @@ $(function() {
 		});
 
 
+		var count = 0;
+		
+		function plus() {
+			if ( ++count===tests.length) {
+				start();
+			}
+		}
+
+
+
 		test("Embed the world", function() {
 			
 			expect( tests.length );
@@ -78,13 +88,6 @@ $(function() {
 
 
 		test("Playback with embedded content", function() {
-
-
-			function plus() {
-				if ( ++count===expects) {
-					start();
-				}
-			}
 
 			stop();
 			

@@ -13,7 +13,6 @@
 	var 
 	// Localize global references
 	doc = document,
-	hasOwn = ({}).hasOwnProperty, 
 
 	//	From Embed.ly API
 	getUrl = function( url ) {
