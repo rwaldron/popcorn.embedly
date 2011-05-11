@@ -11,6 +11,7 @@ test("Popcorn.prototype.embedly()", function() {
   
 });
 
+
 $(function() {
 
 	var $pop = Popcorn("#video"), 
@@ -74,7 +75,7 @@ $(function() {
 		}
 
 
-
+		module("Functional");
 		test("Embed the world", function() {
 			
 			expect( tests.length );

@@ -36,7 +36,7 @@
 		},
 		_setup: function( options ) {
 
-			var parentTo, container;
+			var parentTo, container, requestUrl;
 
 			// Create html container element
 			container = doc.createElement( "div" );
@@ -62,8 +62,14 @@
 			container.style.display = "none";
 
 			if ( options.url ) {
+
+				requestUrl = encodeURIComponent( getUrl( options.url ) );
+
+				if ( !requestUrl ) {
+					Popcorn.error("Invalid url");
+				}
 				
-				Popcorn.getJSONP( "http://api.embed.ly/1/oembed?url=" + encodeURIComponent( getUrl( options.url ) ) + "&format=json&callback=embedly", function( data ) {
+				Popcorn.getJSONP( "http://api.embed.ly/1/oembed?url=" + requestUrl + "&format=json&callback=embedly", function( data ) {
 
 					// In the case of images, raw src url is provided
 					if ( typeof data.html === "undefined" ) {
