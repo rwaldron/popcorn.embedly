@@ -57,7 +57,7 @@ $(function() {
 				}
 			}).exec( i + 2, function() {
 
-				ok( $('[requested="'+ url +'"]').length, "Content from: " + url + " is currently playing" );
+				ok( $('[requested="'+ url +'"]').filter(":visible").length, "Content from: " + url + " is currently playing" );
 				plus();
 				
 			});
