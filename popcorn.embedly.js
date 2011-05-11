@@ -6,15 +6,14 @@
  *
  */
 
-
-//	Requires Popcorn.js
+// Requires Popcorn.js
 (function( global, Popcorn ) {
 
 	var 
 	// Localize global references
 	doc = global.document,
 
-	//	From Embed.ly API
+	// From Embed.ly API
 	getUrl = function( url ) {
 		var urlexp = /^http(s?):\/\/(\w+:{0,1}\w*)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
 		return urlexp.test(url) ? url : null;
@@ -39,8 +38,9 @@
 
 			var parentTo, container;
 
+			// Create html container element
 			container = doc.createElement( "div" );
-			container.innerHTML	= options.text;
+			container.innerHTML = options.text;
 			container.setAttribute("class", "popcorn-embedly");
 
 			// Create unique target ids if none was passed
