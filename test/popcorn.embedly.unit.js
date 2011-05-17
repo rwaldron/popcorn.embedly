@@ -14,92 +14,92 @@ test("Popcorn.prototype.embedly()", function() {
 
 $(function() {
 
-	var $pop = Popcorn("#video"), 
-			rand = [], 
-			tests = [],
-			getUrl = function( url ) {
-				var urlexp = /^http(s?):\/\/(\w+:{0,1}\w*)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
-				return urlexp.test(url) ? url : null;
-			};
+  var $pop = Popcorn("#video"), 
+      rand = [], 
+      tests = [],
+      getUrl = function( url ) {
+        var urlexp = /^http(s?):\/\/(\w+:{0,1}\w*)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
+        return urlexp.test(url) ? url : null;
+      };
 
-	//	domains.js is sourced from: 
-	//	https://gist.github.com/356104
-	function domainUrls() {
-		return $.ajax({
-			url: "domains.js", 
-			dataType: "json", 
-			type: "get"
-		});
-	}
+  //  domains.js is sourced from: 
+  //  https://gist.github.com/356104
+  function domainUrls() {
+    return $.ajax({
+      url: "domains.js", 
+      dataType: "json", 
+      type: "get"
+    });
+  }
 
-	$.when( domainUrls() ).then(function( data ) {
+  $.when( domainUrls() ).then(function( data ) {
 
-		var urls = data.urls;
+    var urls = data.urls;
 
-		for( var i = 0; i < 20; i++ ) {
-			rand.push( Math.floor( Math.random() * urls.length - 1 ) );
-		}		
-
-
-		//console.log( rand );
-	
-		$.each( rand, function( i, idx ) {
-
-			var url = urls[ idx ];
-
-			$pop.embedly({
-				start: i + 1, 
-				end: 24, 
-				url: url, 
-				css: {
-					width: "50%",
-					height: "50%"
-				}
-			}).exec( i + 2, function() {
-
-				ok( $('[requested="'+ url +'"]').filter(":visible").length, "Content from: " + url + " is currently playing" );
-				plus();
-				
-			});
-
-			tests.push( url );
-		});
+    for( var i = 0; i < 20; i++ ) {
+      rand.push( Math.floor( Math.random() * urls.length - 1 ) );
+    }
 
 
-		var count = 0;
-		
-		function plus() {
-			if ( ++count===tests.length) {
-				start();
-			}
-		}
+    //console.log( rand );
+  
+    $.each( rand, function( i, idx ) {
+
+      var url = urls[ idx ];
+
+      $pop.embedly({
+        start: i + 1, 
+        end: 24, 
+        url: url, 
+        css: {
+          width: "50%",
+          height: "50%"
+        }
+      }).exec( i + 2, function() {
+
+        ok( $('[requested="'+ url +'"]').filter(":visible").length, "Content from: " + url + " is currently playing" );
+        plus();
+        
+      });
+
+      tests.push( url );
+    });
 
 
-		module("Functional");
-		test("Embed the world", function() {
-			
-			expect( tests.length );
-
-			$(".popcorn-embedly").each( function( i ) {
-
-				equal( $(this).attr("requested"), tests[i], "Requested: " + $(this).attr("requested") + " === " +  tests[i] );
-
-			});
-		});
+    var count = 0;
+    
+    function plus() {
+      if ( ++count===tests.length) {
+        start();
+      }
+    }
 
 
-		test("Playback with embedded content", function() {
+    module("Functional");
+    test("Embed the world", function() {
+      
+      expect( tests.length );
 
-			stop();
-			
-			expect( tests.length );
+      $(".popcorn-embedly").each( function( i ) {
 
-			$pop.play();
-			
-		});
+        equal( $(this).attr("requested"), tests[i], "Requested: " + $(this).attr("requested") + " === " +  tests[i] );
+
+      });
+    });
 
 
-	});
+    test("Playback with embedded content", function() {
+
+      stop();
+      
+      expect( tests.length );
+
+      $pop.play();
+      
+    });
+
+
+  });
 
 });
 
