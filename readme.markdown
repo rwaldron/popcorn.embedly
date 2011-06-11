@@ -3,6 +3,10 @@
 
 Embed the hell out of anything!
 
+1. Usage:
+
+
+	```javascript
 	var $pop = Popcorn( "#video-id" );
 
 	$pop.embedly({
@@ -13,6 +17,8 @@ Embed the hell out of anything!
 			// set style for the embedded content
 		}
 	});
+	```
+
 
 
 Unit Tests:
