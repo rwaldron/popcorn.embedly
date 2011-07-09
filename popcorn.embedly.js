@@ -2,14 +2,14 @@
  * Popcorn.prototype.embedly()
  *
  * Copyright 2011, Rick Waldron
- * MIT License
+ * Licensed under MIT license.
  *
  */
 
 // Requires Popcorn.js
 (function( global, Popcorn ) {
 
-	var 
+	var
 	// Localize global references
 	doc = global.document,
 
@@ -49,7 +49,7 @@
 			}
 
 			// Find the provided container by name or use the media node parent
-			parentTo = doc.getElementById( options.target ) || 
+			parentTo = doc.getElementById( options.target ) ||
 									this.media.parentNode;
 
 			// Append the new container element
@@ -57,7 +57,7 @@
 
 			// Store display type (could be inline, block, inline-block)
 			options._defaultDisplay = container.style.display;
-			
+
 			// Hide container until start fires
 			container.style.display = "none";
 
@@ -68,7 +68,7 @@
 				if ( !requestUrl ) {
 					Popcorn.error("Invalid url");
 				}
-				
+
 				Popcorn.getJSONP( "http://api.embed.ly/1/oembed?url=" + requestUrl + "&format=json&callback=embedly", function( data ) {
 
 					// In the case of images, raw src url is provided
@@ -92,9 +92,9 @@
 					// Apply styles
 					if ( options.css ) {
 						// this might be a bit brutish
-						Popcorn.extend( 
-							container.firstChild.style, 
-							options.css 
+						Popcorn.extend(
+							container.firstChild.style,
+							options.css
 						);
 					}
 
